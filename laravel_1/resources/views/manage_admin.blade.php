@@ -19,7 +19,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Number</th>
-                <th>Action</th>
+                <th colspan="2" style="text-align: center">Actions</th>
                 </thead>
                 <tbody>
                 @foreach($Admins as $admin)
@@ -27,14 +27,15 @@
                     <td>{{$admin->name}}</td>
                     <td>{{$admin->email}}</td>
                     <td>{{$admin->id_num}}</td>
-                    <td>
-                        <a href="{{route('admin.edit',$admin->id)}}">
-                            <button type="submit" class="btn">Edit</button>
+                    <td> <a href="{{route('admin.edit',$admin->id)}}">
+                            <button type="submit" class="btn btn-success btn-block">Edit</button>
                         </a>
+                    </td>
+                    <td>
                         <form method="post" action="{{route('admin.destroy',$admin->id)}}">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger">Delete </button>
+                            <button type="submit" class="btn btn-danger btn-block">Delete </button>
                         </form>
 
                     </td>

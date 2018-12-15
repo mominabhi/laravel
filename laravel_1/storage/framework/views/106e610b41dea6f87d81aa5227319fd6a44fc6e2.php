@@ -19,7 +19,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Number</th>
-                <th>Action</th>
+                <th colspan="2" style="text-align: center">Actions</th>
                 </thead>
                 <tbody>
                 <?php $__currentLoopData = $Admins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $admin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -27,15 +27,16 @@
                     <td><?php echo e($admin->name); ?></td>
                     <td><?php echo e($admin->email); ?></td>
                     <td><?php echo e($admin->id_num); ?></td>
-                    <td>
-                        <a href="<?php echo e(route('admin.edit',$admin->id)); ?>">
-                            <button type="submit" class="btn">Edit</button>
+                    <td> <a href="<?php echo e(route('admin.edit',$admin->id)); ?>">
+                            <button type="submit" class="btn btn-success btn-block">Edit</button>
                         </a>
+                    </td>
+                    <td>
                         <form method="post" action="<?php echo e(route('admin.destroy',$admin->id)); ?>">
                             <?php echo e(csrf_field()); ?>
 
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger">Delete </button>
+                            <button type="submit" class="btn btn-danger btn-block">Delete </button>
                         </form>
 
                     </td>

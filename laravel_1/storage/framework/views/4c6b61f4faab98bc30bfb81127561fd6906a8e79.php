@@ -82,9 +82,14 @@
             <div class="content">
                 <div class="title m-b-md">
                    Start Laravel
+                   <p><?php echo e($name); ?></p>
                 </div>
-
+                <div>
+                    <p>Email me at <?php echo e($email); ?></p>
+                </div>
                 <div class="links">
+                    
+                    
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

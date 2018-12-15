@@ -82,9 +82,14 @@
             <div class="content">
                 <div class="title m-b-md">
                    Start Laravel
+                   <p>{{$name}}</p>
                 </div>
-
+                <div>
+                    <p>Email me at {{$email}}</p>
+                </div>
                 <div class="links">
+                    {{--<p>Email me at {{$array['email']}}</p>--}}
+                    {{--<p>My name{{$array['name']}}</p>--}}
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

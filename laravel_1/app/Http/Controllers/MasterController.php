@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -15,8 +16,8 @@ class MasterController extends Controller
      */
     public function index()
     {
-        $data['Admins']=Admin::all();
-        return view('manage_admin',$data);
+        $data['Admins'] = Admin::all();
+        return view('manage_admin', $data);
     }
 
     /**
@@ -32,16 +33,16 @@ class MasterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 //        dd($request->input());
-        $objAdmin=new Admin();
-        $objAdmin->name=$request->input('name');
-        $objAdmin->email=$request->input('email');
-        $objAdmin->id_num=$request->input('id_num');
+        $objAdmin = new Admin();
+        $objAdmin->name = $request->input('name');
+        $objAdmin->email = $request->input('email');
+        $objAdmin->id_num = $request->input('id_num');
         $objAdmin->save();
         return redirect()->route('admin.index');
     }
@@ -49,7 +50,7 @@ class MasterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -60,28 +61,28 @@ class MasterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data['Admin']= Admin::find($id);
-        return view('form',$data);
+        $data['Admin'] = Admin::find($id);
+        return view('form', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $objAdmin= Admin::find($id);
-        $objAdmin->name=$request->input('name');
-        $objAdmin->email=$request->input('email');
-        $objAdmin->id_num=$request->input('id_num');
+        $objAdmin = Admin::find($id);
+        $objAdmin->name = $request->input('name');
+        $objAdmin->email = $request->input('email');
+        $objAdmin->id_num = $request->input('id_num');
         $objAdmin->save();
         return redirect()->route('admin.index');
 
@@ -90,22 +91,43 @@ class MasterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $objAdmin= Admin::find($id);
+        $objAdmin = Admin::find($id);
         $objAdmin->delete();
         return redirect()->route('admin.index');
 
     }
+
     public function form()
     {
         return view('form');
     }
+
+    /**
+     * @return mixed
+     */
     public function home()
     {
-        return view("welcome");
+        $name = "mominAbhi";
+        $email = "gfdjhfd@gmail.com";
+        $array = [];
+        $array['email'] = "gfdjhfd@gmail.com";
+        $array['name'] = "Abhi";
+        return view("welcome", $array);
+    }
+
+    public function templating()
+    {
+        $template = view('blade_templating');
+        return view('bladeMaster');
+    }
+
+    public function hulululu()
+    {
+        return view('blade_templating');
     }
 }
