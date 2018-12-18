@@ -12,31 +12,22 @@
 <body>
 <div class="container">
     <div class="panel panel-info col-md-6 col-md-offset-3" style="margin-top: 5%">
+        @if(Session::has('exception'))
+            <div class="alert alert-danger">{{Session::get('exception')}}</div>
+        @endif
         <div class="panel-heading">
-            <h3 style="text-align: center">Registration form</h3>
+            <h3 style="text-align: center">Admin Login</h3>
         </div>
         <div class="panel-body">
-            {{ Form::open(['route' => ['post.store'],'method'=>'POST','data-parsley-validate'=>''])}}
+            {{ Form::open(['url' => '/check', 'method' => 'post'])}}
             {{ csrf_field() }}
             <div class="form-group">
-                <label>Title:</label>
-                {{Form::text('title',null,['class'=>'form-control','required'=>'','maxlength'=>'255'])}}
+                <label>Name:</label>
+                {{Form::text('name',null,['class'=>'form-control'])}}
             </div>
             <div class="form-group">
-                <label>category_id:</label>
-                {{Form::number('category_id',null,['class'=>'form-control','required'=>'','maxlength'=>'255'])}}
-            </div>
-            <div class="form-group">
-                <label>Tags:</label>
-                <select class="form-control" name="tags[]" multiple="multiple">
-                    @foreach($tags as $tag)
-                        <option value="{{$tag->id}}">{{$tag->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Body:</label>
-                {{Form::textarea('body',null,['class'=>'form-control','required'=>''])}}
+                <label>Password:</label>
+                {{Form::text('password',null,['class'=>'form-control'])}}
             </div>
             <input type="submit" class="btn btn-success btn-block" name="submit">
             {{ Form::close()}}

@@ -15,3 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/post','formController');
+Route::resource('/tag','TagController');
+Route::get('/delete/{id}','formController@delete');
+Route::get('/login','AdminController@login');
+Route::post('/check','AdminController@check');
+Route::get('/admin_list','AdminController@admin_list');
+Route::get('/logout','AdminController@logout');

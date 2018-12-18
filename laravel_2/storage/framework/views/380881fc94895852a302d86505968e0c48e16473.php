@@ -26,6 +26,19 @@
 
             </div>
             <div class="form-group">
+                <label>category_id:</label>
+                <?php echo e(Form::number('category_id',null,['class'=>'form-control','required'=>'','maxlength'=>'255'])); ?>
+
+            </div>
+            <div class="form-group">
+                <label>Tags:</label>
+                <select class="form-control" name="tags[]" multiple="multiple">
+                    <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($tag->id); ?>"><?php echo e($tag->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </div>
+            <div class="form-group">
                 <label>Body:</label>
                 <?php echo e(Form::textarea('body',null,['class'=>'form-control','required'=>''])); ?>
 
